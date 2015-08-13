@@ -1,4 +1,5 @@
 """" General
+set nocompatible     "from http://nvie.com/posts/how-i-boosted-my-vim/
 set number              " Show line numbers
 set nowrap	        " Wrap lines
 set showbreak=+++	" Wrap-broken line prefix
