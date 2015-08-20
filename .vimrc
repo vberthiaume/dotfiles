@@ -4,6 +4,7 @@ set number              " Show line numbers
 set nowrap	        " Wrap lines
 set showbreak=+++	" Wrap-broken line prefix
 set textwidth=100	" Line wrap (number of cols)
+set linebreak
 set showmatch	        " Highlight matching brace
 set visualbell	        " Use visual bell (no beeping)
 
