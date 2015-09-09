@@ -1,7 +1,6 @@
 """" General
 set nocompatible     "from http://nvie.com/posts/how-i-boosted-my-vim/
 set number              " Show line numbers
-set nowrap	        " Wrap lines
 set showbreak=+++	" Wrap-broken line prefix
 set textwidth=100	" Line wrap (number of cols)
 set linebreak
@@ -27,4 +26,10 @@ set undolevels=1000	        " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 
 """ VB
-syntax on               "turns highlighting on
+syntax on                   "turns highlighting on
+"set nowrap	            "do not Wrap lines
+augroup WrapLineInTxtFile   "turns wraping on for .txt files
+    autocmd!
+    autocmd FileType .txt setlocal wrap
+augroup END
+set tw=0                    "turn word wrapping off
