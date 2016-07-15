@@ -33,3 +33,7 @@ augroup WrapLineInTxtFile   "turns wraping on for .txt files
     autocmd FileType .txt setlocal wrap
 augroup END
 set tw=0                    "turn word wrapping off
+" activate shift-tab for command mode
+nnoremap <S-Tab> <<
+" activate shift-tab for insert mode
+inoremap <S-Tab> <C-d>
