@@ -115,3 +115,5 @@ fi
 
 # added by Anaconda 2.3.0 installer
 export PATH="/home/vberthiaume/anaconda/bin:$PATH"
+
+PS1="\[\e[33m\]\w\[\e[m\]\[\e[33m\]\\$\[\e[m\] "
