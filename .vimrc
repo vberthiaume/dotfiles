@@ -86,4 +86,3 @@ nnoremap <S-Tab> <<
 " activate shift-tab for insert mode
 inoremap <S-Tab> <C-d>
 
-"colorscheme solarized
