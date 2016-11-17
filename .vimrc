@@ -2,6 +2,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+execute pathogen#infect()
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -28,7 +30,7 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'user/L9', {'name': 'newL9'}
 
 "doesn't work on RPI, requires vim compile with python or some shit
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -85,3 +87,5 @@ set tw=0                    "turn word wrapping off
 nnoremap <S-Tab> <<
 " activate shift-tab for insert mode
 inoremap <S-Tab> <C-d>
+
+colorscheme evening
