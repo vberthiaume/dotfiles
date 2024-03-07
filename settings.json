@@ -45,7 +45,11 @@
   {
       "defaults": 
       {
-          "colorScheme": { "light": "Material", "dark": "AdventureTime" },
+          "colorScheme": 
+          {
+              "dark": "AdventureTime",
+              "light": "Material"
+          },
           "font": 
           {
               "face": "Space Mono",
@@ -78,22 +82,16 @@
               "startingDirectory": "C:\\Users\\barth\\Documents\\git\\"
           },
           {
-              "guid": "{15a9eb92-757a-5513-817c-8b67d8175a0c}",
+              "guid": "{a56b1272-36d8-513c-856e-80f1433cdeae}",
               "hidden": false,
               "name": "Developer Command Prompt for VS 2022",
               "source": "Windows.Terminal.VisualStudio"
           },
           {
-              "guid": "{b3a4f8e3-f138-5579-8f39-a527116dd865}",
+              "guid": "{a433598f-4541-5f36-b058-e19739b30e5c}",
               "hidden": false,
               "name": "Developer PowerShell for VS 2022",
               "source": "Windows.Terminal.VisualStudio"
-          },
-          {
-              "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
-              "hidden": true,
-              "name": "Visual Studio Debug Console",
-              "source": "VSDebugConsole"
           }
       ]
   },
@@ -146,7 +144,7 @@
           "yellow": "#FDED02"
       },
       {
-          "background": "#1F1D45",
+          "background": "#16132E",
           "black": "#050404",
           "blue": "#0F4AC6",
           "brightBlack": "#4E7CBF",
