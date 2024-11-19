@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+echo "================ starting .bashrc ================"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -37,7 +39,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -57,10 +59,11 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='\w\[\033[00m\]\$ '
+    PS1='\[\033[01;32m\]\w\[\033[00m\]\$ '
 else
     PS1='\w\$ '
 fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -83,6 +86,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -113,7 +119,28 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# added by Anaconda 2.3.0 installer
-export PATH="/home/vberthiaume/anaconda/bin:$PATH"
+# github instructions for ssh
+env=~/.ssh/agent.env
+agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
 
-PS1="\[\e[33m\]\w\[\e[m\]\[\e[33m\]\\$\[\e[m\] "
+agent_start () {
+    (umask 077; ssh-agent >| "$env")
+    . "$env" >| /dev/null ; }
+
+agent_load_env
+
+# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
+agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+    agent_start
+    ssh-add
+elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+    ssh-add
+fi
+unset env
+
+GCC_PATH=~/Developer/gcc-arm-none-eabi-10-2020-q4-major/bin
+export PATH=$GCC_PATH:$PATH
+
+echo "================ end of .bashrc ================ "
